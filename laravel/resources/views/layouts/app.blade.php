@@ -63,7 +63,6 @@
                                     <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">
                                         自分の投稿
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>

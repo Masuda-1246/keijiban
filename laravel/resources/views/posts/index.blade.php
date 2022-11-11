@@ -20,6 +20,15 @@
                                 投稿者:{{ $post->user->name }}</h5>
                             <h6 class="card-text">{{ $post->content }}</p>
                             <a href="{{ route('posts.show', $post->id) }}" >詳細</a>
+                            @if(Auth::user())
+                                @if(Auth::user()->is_super)
+                                <form action="{{route('posts.destroy', $post)}}" method="post" class="float-right">
+                                    @csrf
+                                    @method('delete')
+                                    <input type="submit" value="削除" class="btn btn-danger float-left float-right" onclick='return confirm("削除しますか？");'>
+                                </form>
+                                @endif
+                            @endif
                         </div>
                     </div>
                     @endforeach
