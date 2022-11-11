@@ -68,9 +68,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $posts = Post::all();
+        $posts->load('user');
+        return view('posts.edit',[
+            'post' => $post,
+        ]);
     }
 
     /**
@@ -80,9 +84,11 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostRequest $request, Post $post)
     {
-        //
+        $input = $request->only($post->getFillable()) ;
+        $post->update($input);
+        return redirect('/users/'.$post->user_id);
     }
 
     /**
@@ -91,8 +97,10 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $user_id = $post->user_id;
+        $post->delete();
+        return redirect('/users/'.$user_id)->with('success', 'ブログ記事を削除しました');
     }
 }
