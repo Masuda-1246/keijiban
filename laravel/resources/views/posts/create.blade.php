@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('掲示板') }}</div>
+                <div class="card-header">{{ __('投稿') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -28,7 +28,7 @@
                           @csrf
                           <div class="form-group">
                             <div class="exapmleInputEmail1">タイトル<div>
-                            <input class="form-control" type="text" id="exapmleInputEmail1" placeholder="Enter title" name="title" />
+                            <input class="form-control" type="text" id="exapmleInputEmail1" name="title" />
                           </div>
 
                           <div class="form-group">
@@ -37,7 +37,7 @@
                           </div>
 
                           <input type="hidden" name="user_id" value="{{Auth::id()}}">
-                          <button type="submit" class="btn btn-primary">投稿</button>
+                          <button type="submit" class="btn btn-primary float-right">投稿</button>
                         </form>
                       </div>
                     </div>
