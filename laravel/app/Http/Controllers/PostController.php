@@ -99,8 +99,16 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $user_id = $post->user_id;
         $post->delete();
-        return redirect('/users/'.$user_id)->with('success', 'ブログ記事を削除しました');
+        return redirect('/');
+    }
+
+    public function admin()
+    {
+        $posts = Post::latest()->get();
+        $posts->load('user','comments');
+        return view('posts.index',[
+            'posts' => $posts,
+        ]);
     }
 }
