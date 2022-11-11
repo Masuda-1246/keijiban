@@ -66,6 +66,9 @@
                                     </form>
                                 </div>
                             </li>
+                            <div>
+                                <a class="btn btn-primary" href="{{ route('posts.create') }}">投稿する</a>
+                            </div>
                         @endguest
                     </ul>
                 </div>
