@@ -32,6 +32,26 @@ docker+Laravelの環境で作成。
 |AP(php)|board_web |9000/tcp|
 |WB(phpmyadmin)|phpmyadmin/phpmyadmin |0.0.0.0:8080->80/tcp|
 
+
+## 使い方
+
+```bash
+cd keijiban
+cd board
+docker-compose up -d --build
+
+//SQLの設定
+docker exec -it app_db mysql -u root -p
+password>root
+use development;
+ALTER user 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
+
+//migrate処理
+docker exec -it app_php bash
+php artisan migrate
+```
+
+## 
 ## 参考
 https://yama-itech.net/laravel-auth-function
 https://readouble.com/laravel/7.x/ja/authentication.html
