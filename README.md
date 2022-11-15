@@ -49,6 +49,9 @@ ALTER user 'root'@'%' IDENTIFIED WITH mysql_native_password BY 'root';
 //migrate処理
 docker exec -it app_php bash
 php artisan migrate
+
+//node modules
+npm install && npm run dev
 ```
 
 ## 
